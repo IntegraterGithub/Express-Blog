@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Areze's Blog</title>
+
+  <style>
+* {
+  font-family:  Montserrat,sans-serif;
+  text-align: center;
+
+
+
+}
+#content {
+  width: 50%;
+  margin-top:25px;
+}
+h1 {
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+body {
+  display: grid;
+  justify-items: center;
+}
+
+</style>
+</head>
+<body>
+	<h1><%= article.title %></h1>
+  <small><%= article.date %> </small>
+  <div id="content"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+   marked.setOptions({
+  breaks: true
+});
+    document.getElementById('content').innerHTML =
+      marked("<%= article.content %>");
+  </script>
+</body>
+</html>

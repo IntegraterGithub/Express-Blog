@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+
+ <style>
+* {
+  font-family: Trebuchet MS;
+}
+.article-container{
+  width: 50%;
+  text-align: left;
+ 
+}
+
+a{
+	color: blue;
+}
+body {
+  display: grid;
+  justify-items: center;
+}
+h1 {
+	text-align: left;
+}
+p {
+	text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<h1> My Blog! </h1>
+<p>Official blog of Areze about web development. </p>
+
+<% for(let i=0;i<articles.length;i++){ %>
+	
+<div class="article-container">
+<a href="http://localhost:3000/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
+<small><%= articles[i].date %> </small>
+<p><%= articles[i].description%></p>
+
+</div>
+
+<%} %>
+
+
+
+
+</body>
+
+
+
+</html>
