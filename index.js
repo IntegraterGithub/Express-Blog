@@ -34,7 +34,7 @@ app.get("/article/:title", async (req, res) => {
 if(!article) return res.send("not found")
 res.render("article", {article: article})
 })
-app.listen(3000, () => { 
+app.listen(process.env.PORT || 8080, () => { 
 	console.log(`App listening!`)
 })
 console.log(Date());
