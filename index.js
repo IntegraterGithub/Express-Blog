@@ -40,7 +40,7 @@ if(!article) return res.send("not found");
 var ip_info = get_ip(req);
      console.log(ip_info);
 if(article.viewersIp.indexOf(ip_info.ip) === -1) {
-	article.views++
+	article.views = article.views + 1
 	article.save();
 }
 res.render("article", {article: article})
