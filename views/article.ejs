@@ -1,9 +1,8 @@
 <!doctype html>
 <html>
 <head>
-<link href="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1" rel="icon">
+  <link href="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1" rel="icon">
  
- <meta charset="utf-8"/>
    <meta name="description" content="<%=article.description%>">
  <meta name="keywords" content="HTML, CSS, JavaScript, Web development, Coding, Programming, Areze">
    <meta name="author" content="Areze">
@@ -15,7 +14,10 @@
 <meta name="twitter:description" content="<%=article.description%>"
 <meta name="twitter:image" content="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1">
 <meta name="twitter:card" content="summary_large_image">
+ <title>Areze's Blog - <%= article.title %></title>
 
+
+ 
   <style>
 * {
   font-family:  Montserrat,sans-serif;
@@ -37,7 +39,15 @@ body {
   display: grid;
   justify-items: center;
 }
-
+code {
+  background-color:  #272822;
+  padding: 0.25rem;
+  color: white;
+  border-radius: 4px;
+}
+textarea {
+  display: none
+}
 </style>
 </head>
 <body>
@@ -46,12 +56,22 @@ body {
   <div id="content"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+ 
+</script>
   <script>
    marked.setOptions({
-  breaks: true
+ breaks: true
 });
+  function htmlDecode(input){
+  var e = document.createElement('textarea');
+  e.innerHTML = input;
+  // handle case of empty input
+  return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+}
+
+
     document.getElementById('content').innerHTML =
-      marked("<%= article.content %>");
+     htmlDecode(marked("<%=article.content%>") );
   </script>
 </body>
 </html>
