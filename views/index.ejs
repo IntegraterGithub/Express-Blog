@@ -1,77 +1,65 @@
 <!doctype html>
 <html>
 <head>
-  <link href="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1" rel="icon">
- 
-   <meta name="description" content="<%=article.description%>">
- <meta name="keywords" content="HTML, CSS, JavaScript, Web development, Coding, Programming, Areze">
+ <link href="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1" rel="icon">
+ <meta name="description" content="Blogs on web development by Areze. Posts include tutorials, reviews and more. The page is also daily updated with new blogs so stick around.">
+ <meta name="keywords" content="HTML, CSS, JavaScript">
    <meta name="author" content="Areze">
-   <meta property="og:title" content="Areze's Blog - <%= article.title %>">
-<meta property="og:description" content="<%=article.description%>">
+   <meta property="og:title" content="Areze's Blog - Blogs on web development and more!">
+<meta property="og:description" content="Blogs on web development by Areze. Posts include tutorials, reviews and more. The page is also daily updated with new blogs so stick around.">
 <meta property="og:image" content="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1">
-<meta property="og:url" content="https://arezeblog.herokuapp.com/">
-<meta name="twitter:title" content="Areze's Blog ">
-<meta name="twitter:description" content="<%=article.description%>"
+<meta property="og:url" content="arezeblog.herokuapp.com">
+<meta name="twitter:title" content="Areze's Blog - Blogs on web development and more! ">
+<meta name="twitter:description" content=" A blog made by areze about web development.">
 <meta name="twitter:image" content="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1">
 <meta name="twitter:card" content="summary_large_image">
- <title>Areze's Blog - <%= article.title %></title>
-
-
- 
-  <style>
+ <style>
 * {
-  font-family:  Montserrat,sans-serif;
-  text-align: center;
-
-
-
+  font-family: Trebuchet MS;
 }
-#content {
+.article-container{
   width: 50%;
-  margin-top:25px;
-}
-h1 {
-  font-weight: 900;
-  line-height: 1.1;
+  text-align: left;
+ 
 }
 
+a{
+	color: blue;
+}
 body {
   display: grid;
   justify-items: center;
 }
-code {
-  background-color:  #272822;
-  padding: 0.25rem;
-  color: white;
-  border-radius: 4px;
+h1 {
+	text-align: left;
 }
-textarea {
-  display: none
+p {
+	text-align: left;
 }
 </style>
 </head>
+
 <body>
-	<h1><%= article.title %></h1>
-  <small><%= article.date %> </small>
-  <div id="content"></div>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
- 
-</script>
-  <script>
-   marked.setOptions({
- breaks: true
-});
-  function htmlDecode(input){
-  var e = document.createElement('textarea');
-  e.innerHTML = input;
-  // handle case of empty input
-  return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-}
+<h1> My Blog! </h1>
+<p>Official blog of Areze about web development. </p>
+
+<% for(let i=0;i<articles.length;i++){ %>
+	
+<div class="article-container">
+<a href="http://localhost:3000/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
+<small><%= articles[i].date %> </small>
+<p><%= articles[i].description%></p>
+
+</div>
+
+<%} %>
 
 
-    document.getElementById('content').innerHTML =
-     htmlDecode(marked("<%=article.content%>") );
-  </script>
+
+
 </body>
+
+
+
 </html>
