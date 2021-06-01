@@ -27,6 +27,10 @@ font-family: 'Rubik', sans-serif;
   width: 50%;
   margin-top:25px;
 }
+#go-back {
+  text-decoration: none
+}
+
 h1, small{
   width:  50%;
    display: block;
@@ -61,6 +65,7 @@ textarea {
 </style>
 </head>
 <body>
+<a href="https://arezeblog.herokuapp.com/" id="go-back">← Go back</a>
 	<h1><%= article.title %></h1>
   <small><%= article.date %> </small>
   <div id="content"></div>
