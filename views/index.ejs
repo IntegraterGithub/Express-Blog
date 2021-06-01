@@ -1,27 +1,24 @@
 <!doctype html>
 <html>
 <head>
-<meta name="google-site-verification" content="HLnlVG8136DFdawurz1l8QH_vT3TZsnqrz5IkYMmI4c" />
  <link href="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1" rel="icon">
  <meta name="description" content="Blogs on web development by Areze. Posts include tutorials, reviews and more. The page is also daily updated with new blogs so stick around.">
- <meta name="keywords" content="HTML, CSS, JavaScript, IT, Seo">
+ <meta name="keywords" content="HTML, CSS, JavaScript">
    <meta name="author" content="Areze">
    <meta property="og:title" content="Areze's Blog - Blogs on web development and more!">
 <meta property="og:description" content="Blogs on web development by Areze. Posts include tutorials, reviews and more. The page is also daily updated with new blogs so stick around.">
 <meta property="og:image" content="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1">
 <meta property="og:url" content="arezeblog.herokuapp.com">
-<title> Areze's Blog - Blogs on web development and more! </title>
 <meta name="twitter:title" content="Areze's Blog - Blogs on web development and more! ">
-<meta name="twitter:description" content="Blogs on web development by Areze. Posts include tutorials, reviews and more. The page is also daily updated with new blogs so stick around.">
+<meta name="twitter:description" content=" A blog made by areze about web development.">
 <meta name="twitter:image" content="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
  <style>
 * {
- font-family: 'Rubik', sans-serif;
-}
+font-family: 'Rubik', sans-serif;
+  }
 .article-container{
   width: 50%;
   text-align: left;
@@ -41,26 +38,70 @@ h1 {
 p {
 	text-align: left;
 }
+input {
+	width: 300px;
+	height: 25px;
+
+}
 </style>
 </head>
 
 <body>
 
 <h1> My Blog! </h1>
-<p>Official blog of Areze about web development, IT and seo. </p>
-
+<p>Official blog of Areze about web development. </p>
+<input type='text'  placeholder='Search posts' id="search">
 <% for(let i=0;i<articles.length;i++){ %>
-	
-<div class="article-container">
-<a href="https://arezeblog.herokuapp.com/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
+
+<div class="article-container" id="content">
+<a href="http://localhost:3000/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
 <small><%= articles[i].date %> </small>
 <p><%= articles[i].description%></p>
-
 </div>
 
 <%} %>
 
+<script>
+	document.getElementById("search").addEventListener('keyup', () => {
+fetch("http://localhost:3000/post").then((r) => {
+return r.json()
+  }).then((result) => {
+  var results = result.filter((element) => {
+  	return element.title.includes(document.getElementById("search").value)
+  });
+  console.log(results);
+var posts = document.getElementsByClassName("article-container");
+for(let i=0;i<posts.length;i++){
+	console.log(posts.innerHTML)
+	posts[i].innerHTML = ""
+}
+    for(let i=0;i<results.length;i++){
+  	
+  	var anchor = document.createElement("a");
+  	anchor.href = `http://localhost:3000/article/${results[i].title.split(" ").join("-")}`
+  	var h2 = document.createElement("h2");
+  	h2.innerText = results[i].title
+  	anchor.appendChild(h2);
+    var smallText = document.createElement("small");
+    smallText.innerText = results[i].date;
+    var p = document.createElement("p");
+    p.innerText = results[i].description;
+    var content = document.createElement("div");
+    content.className = "article-container";
+    content.appendChild(anchor);
+    content.appendChild(smallText);
+    content.appendChild(p);
+    document.querySelector("body").appendChild(content);
 
+  }
+
+  }).catch(err => console.log(err))
+
+
+})
+
+
+</script>
 
 
 </body>
