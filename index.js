@@ -4,7 +4,10 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://dbUser:dbPassword@cluster0.osuxa.mongodb.net/myBlog", {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
+
 })
+var get_ip = require('ipware')().get_ip;
+
 app.use(express.urlencoded({extended: false}));
 
 var articleSchema = new mongoose.Schema({
@@ -24,7 +27,8 @@ Post.save()
 app.set('view engine', "ejs");
 
 app.get('/', async (req, res) => {
-
+ var ip_info = get_ip(req);
+     console.log(ip_info);
 const articles = await articleModel.find({}).sort({date: 1}).lean();
 
 res.render("index", {articles: articles})
