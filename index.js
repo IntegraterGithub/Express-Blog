@@ -45,7 +45,7 @@ if(article.viewersIp.indexOf(ip_info.ip) === -1) {
 }
 res.render("article", {article: article})
 })
-app.listen(3000, () => { 
+app.listen(process.env.PORT || 3000, () => { 
 	console.log(`App listening!`)
 })
 console.log(Date());
