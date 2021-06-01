@@ -54,7 +54,7 @@ input {
 <% for(let i=0;i<articles.length;i++){ %>
 
 <div class="article-container" id="content">
-<a href="http://localhost:3000/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
+<a href="https://arezeblog.herokuapp.com/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
 <small><%= articles[i].date %> </small>
 <p><%= articles[i].description%></p>
 </div>
@@ -63,7 +63,7 @@ input {
 
 <script>
 	document.getElementById("search").addEventListener('keyup', () => {
-fetch("http://localhost:3000/post").then((r) => {
+fetch("https://arezeblog.herokuapp.com/post").then((r) => {
 return r.json()
   }).then((result) => {
   var results = result.filter((element) => {
@@ -78,7 +78,7 @@ for(let i=0;i<posts.length;i++){
     for(let i=0;i<results.length;i++){
   	
   	var anchor = document.createElement("a");
-  	anchor.href = `http://localhost:3000/article/${results[i].title.split(" ").join("-")}`
+  	anchor.href = `https://arezeblog.herokuapp.com/article/${results[i].title.split(" ").join("-")}`
   	var h2 = document.createElement("h2");
   	h2.innerText = results[i].title
   	anchor.appendChild(h2);
