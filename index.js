@@ -19,9 +19,11 @@ var Post = new articleModel(post);
 Post.save()
 }
 
-app.get("/post", (req, res) => {
+app.get("/post", async (req, res) => {
 	
- //const article = await articleModel.findOne({}).lean();
+ const article = await articleModel.find({}).lean();
+ console.log(article);
+ res.json(article);
 })
 
 app.set('view engine', "ejs");
