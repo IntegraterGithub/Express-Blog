@@ -25,7 +25,7 @@ app.set('view engine', "ejs");
 
 app.get('/', async (req, res) => {
 
- const articles = await articleModel.find({}).lean();
+const articles = await articleModel.find({}).sort({date: 1}).lean();
 
 res.render("index", {articles: articles})
 })
