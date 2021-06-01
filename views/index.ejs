@@ -47,7 +47,7 @@ p {
 <% for(let i=0;i<articles.length;i++){ %>
 	
 <div class="article-container">
-<a href="http://localhost:3000/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
+<a href="https://arezeblog.herokuapp.com/article/<%=articles[i].title.split(" ").join("-")%>"><h2><%= articles[i].title %></h2></a>
 <small><%= articles[i].date %> </small>
 <p><%= articles[i].description%></p>
 
