@@ -2,20 +2,20 @@
 <html>
 <head>
 <link href="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1" rel="icon">
-<title>Areze Blog - <%- article.title %> </title>
-<meta name="description" content="Blogs on web development by Areze.">
- <meta name="keywords" content="HTML, CSS, JavaScript">
+ <meta charset="utf-8"/>
+   <meta name="description" content="<%=article.description%>">
+ <meta name="keywords" content="HTML, CSS, JavaScript, Web development, Coding, Programming, Areze">
    <meta name="author" content="Areze">
-   <meta property="og:title" content="Areze's Blog">
-<meta property="og:description" content="A blog made by areze about web development.">
+   <meta property="og:title" content="Areze's Blog - <%= article.title %>">
+<meta property="og:description" content="<%=article.description%>">
 <meta property="og:image" content="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1">
 <meta property="og:url" content="https://arezeblog.herokuapp.com/">
 <meta name="twitter:title" content="Areze's Blog ">
-<meta name="twitter:description" content=" A blog made by areze about web development.">
+<meta name="twitter:description" content="<%=article.description%>"
 <meta name="twitter:image" content="https://www.gravatar.com/avatar/693f05349fa5386c34f7957d113199de?s=328&d=identicon&r=PG&f=1">
 <meta name="twitter:card" content="summary_large_image">
-  <meta charset="utf-8"/>
-  <title>Areze's Blog</title>
+ <title>Areze's Blog - <%= article.title %></title>
+
 
   <style>
 * {
