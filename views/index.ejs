@@ -68,7 +68,7 @@ fetch("https://arezeblog.herokuapp.com/post").then((r) => {
 return r.json()
   }).then((result) => {
   var results = result.filter((element) => {
-  	return element.title.includes(document.getElementById("search").value)
+  	return element.title.toLowerCase().includes(document.getElementById("search").value.toLowerCase())
   });
   console.log(results);
 var posts = document.getElementsByClassName("article-container");
