@@ -29,6 +29,7 @@ var Post = new articleModel(post);
 Post.save()
 }
 app.get("/sitemap.xml", (req, res) => {
+res.setHeader('content-type', 'application/xml');
 res.sendFile("./sitemap.xml", { root: "." })
 })
 app.get("/post", async (req, res) => {
