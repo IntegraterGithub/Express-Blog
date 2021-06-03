@@ -9,6 +9,7 @@ app.use(function(request, response, next) {
 
     next();
 })
+app.use(express.static('public'))
 var mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://dbUser:dbPassword@cluster0.osuxa.mongodb.net/myBlog", {
 	useNewUrlParser: true, 
