@@ -21,9 +21,9 @@ Post.save()
 
 app.get("/post", async (req, res) => {
 	
- const article = await articleModel.find({}).lean();
- console.log(article);
- res.json(article);
+const articles = await articleModel.find({}).sort({date: 1}).lean();
+ console.log(articles);
+ res.json(articles);
 })
 
 app.set('view engine', "ejs");
