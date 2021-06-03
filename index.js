@@ -27,7 +27,9 @@ var newPost = (post) => {
 var Post = new articleModel(post);
 Post.save()
 }
-
+app.get("/sitemap.xml", (req, res) => {
+res.sendFile("./sitemap.xml")
+})
 app.get("/post", async (req, res) => {
 	
 const articles = await articleModel.find({}).sort({date: 1}).lean();
